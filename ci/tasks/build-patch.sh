@@ -15,18 +15,20 @@ popd
 echo "Generate apply.sh..."
 apply_script='apply.sh'
 cat > "${apply_script}"<<EOF
+
+
 #!/bin/bash
 
 TARGET_DIR="/var/vcap/packages/bosh_softlayer_cpi"
 TARGET_DIR_BIN=\$TARGET_DIR/bin
 
 # check if the eCPI current version is different with target version
-if [ ! -f '\$TARGET_DIR'/version ]; then
+if [ ! -f \$TARGET_DIR/version ]; then
 	CURRENT_VERSION="unknown"
 else
-	CURRENT_VERSION=`cat '\$TARGET_DIR'/version`'\
+	CURRENT_VERSION=\`cat \$TARGET_DIR/version\`
 fi
-TARGET_VERSION='`cat version`'
+TARGET_VERSION=\`cat version\`
 
 if [ "\$TARGET_VERSION" == "\$CURRENT_VERSION" ]; then
 	echo "The current version of eCPI is the same as target version \$TARGET_VERSION. Won't do any upgrade. Exit directly."
