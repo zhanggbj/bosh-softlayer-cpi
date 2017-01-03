@@ -3,6 +3,7 @@ platform: linux
 image: docker:///cloudfoundry/bosh-lite-ci
 inputs:
   - name: bosh-cpi-release
+  - name: bosh-cpi-final-release
 outputs:
   - name: promote
 run:

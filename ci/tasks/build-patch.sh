@@ -8,7 +8,7 @@ export GOPATH=${PWD}/src
 
 pushd ${PWD}/src
   bin/build-linux-amd64
-  cp version out/softlayer_cpi promote/bosh-softlayer-cpi-patch
+  cp out/softlayer_cpi promote/bosh-softlayer-cpi-patch
 popd
 
 apply_script='apply.sh'
@@ -54,6 +54,11 @@ else
 	exit 1
 fi
 EOF
+
+pushd bosh-cpi-final-release
+  tar -zxvf bosh-softlayer-cpi-*.tgz
+  cp version ../promote/bosh-softlayer-cpi-patch
+popd
 
 cp ${apply_script} promote/bosh-softlayer-cpi-patch
 cd promote/bosh-softlayer-cpi-patch
