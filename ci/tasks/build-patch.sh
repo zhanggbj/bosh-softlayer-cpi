@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 set -e
-
-export GOPATH=${PWD}/bosh-cpi-release
+base=$PWD
+export GOPATH=${base}/bosh-cpi-release
 mkdir -p promote/bosh-softlayer-cpi-patch
 
 pushd $GOPATH/src/bosh-softlayer-cpi
   bin/build-linux-amd64
-  cp out/softlayer_cpi promote/bosh-softlayer-cpi-patch
+  cp out/softlayer_cpi ${base}/promote/bosh-softlayer-cpi-patch
 popd
 
 apply_script='apply.sh'
@@ -53,13 +53,13 @@ else
 	exit 1
 fi
 EOF
+cp ${apply_script} ${base}/promote/bosh-softlayer-cpi-patch
 
 pushd bosh-cpi-final-release
   tar -zxvf bosh-softlayer-cpi-*.tgz
-  cp version ../promote/bosh-softlayer-cpi-patch
+  cp version ${base}/promote/bosh-softlayer-cpi-patch
 popd
 
-cp ${apply_script} promote/bosh-softlayer-cpi-patch
 cd promote/bosh-softlayer-cpi-patch
 version_number=`cat version`
 tar -zcvf bosh-softlayer-cpi-patch-${version_number}.tgz ${apply_script} version softlayer_cpi
