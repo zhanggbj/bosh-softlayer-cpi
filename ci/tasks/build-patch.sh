@@ -3,6 +3,7 @@
 set -e
 
 export GOPATH=${PWD}/bosh-cpi-release
+mkdir -p promote/bosh-softlayer-cpi-patch
 
 pushd $GOPATH/src/bosh-softlayer-cpi
   bin/build-linux-amd64
