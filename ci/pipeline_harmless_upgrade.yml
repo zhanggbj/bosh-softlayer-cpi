@@ -1,4 +1,14 @@
 resources:
+- name: bosh-cpi-release-in
+  type: git
+  source:
+    uri: git@github.com:zhanggbj/bosh-softlayer-cpi.git
+    branch: harmless-upgrade
+    private_key: {{github_private_key_zhanggbj}}
+    ignore_paths:
+        - .final_builds/**/*.yml
+        - releases/**/*.yml
+
 - name: bosh-cpi-final-artifacts
   type: s3
   source:
@@ -16,13 +26,15 @@ resources:
     secret_access_key: {{s3_secret_access_key}}
 
 jobs:
-- name: build-patch
+- name: build-cpi-patch
   serial: true
   plan:
   - aggregate:
-    - {trigger: false, get: bosh-cpi-release, resource: bosh-cpi-final-artifacts}
+    - {trigger: false, get: bosh-cpi-release, resource: bosh-cpi-release-in}
+    - {trigger: false, get: bosh-cpi-final-release, resource: bosh-cpi-final-artifacts}
 
-  - task: build-patch
+
+  - task: build-cpi-patch
     file: bosh-cpi-release/ci/tasks/build-patch.yml
 
   - put: bosh-cpi-patch-artifacts
