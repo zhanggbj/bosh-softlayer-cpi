@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 set -e
+
+echo "Build softlayer cpi..."
 base=$PWD
 export GOPATH=${base}/bosh-cpi-release
 mkdir -p promote/bosh-softlayer-cpi-patch
@@ -10,6 +12,7 @@ pushd $GOPATH/src/bosh-softlayer-cpi
   cp out/softlayer_cpi ${base}/promote/bosh-softlayer-cpi-patch
 popd
 
+echo "Generate apply.sh..."
 apply_script='apply.sh'
 cat > "${apply_script}"<<EOF
 #!/bin/bash
@@ -53,8 +56,11 @@ else
 	exit 1
 fi
 EOF
+
+cat ${apply_script}
 cp ${apply_script} ${base}/promote/bosh-softlayer-cpi-patch
 
+echo "Copy cpi version..."
 pushd bosh-cpi-final-release
   tar -zxvf bosh-softlayer-cpi-*.tgz
   cd packages
