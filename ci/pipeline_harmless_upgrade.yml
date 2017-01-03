@@ -33,7 +33,6 @@ jobs:
     - {trigger: false, get: bosh-cpi-release, resource: bosh-cpi-release-in}
     - {trigger: false, get: bosh-cpi-final-release, resource: bosh-cpi-final-artifacts}
 
-
   - task: build-cpi-patch
     file: bosh-cpi-release/ci/tasks/build-patch.yml
 
