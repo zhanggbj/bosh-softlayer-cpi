@@ -2,11 +2,9 @@
 
 set -e
 
-mkdir -p ${PWD}/src
-cp -a ./bosh-cpi-release/* ${PWD}/src
-export GOPATH=${PWD}/src
+export GOPATH=${PWD}/bosh-cpi-release
 
-pushd ${PWD}/src
+pushd $GOPATH/bosh-softlayer-cpi
   bin/build-linux-amd64
   cp out/softlayer_cpi promote/bosh-softlayer-cpi-patch
 popd
