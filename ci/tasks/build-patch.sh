@@ -57,11 +57,11 @@ cp ${apply_script} ${base}/promote/bosh-softlayer-cpi-patch
 
 pushd bosh-cpi-final-release
   tar -zxvf bosh-softlayer-cpi-*.tgz
-  version_number=`cat version`
-  echo ${version_number}.0.0 > version
-  cp version ${base}/promote/bosh-softlayer-cpi-patch
+  cd packages
+  tar -zxvf bosh_softlayer_cpi.tgz
+  cp bosh-softlayer-cpi/version ${base}/promote/bosh-softlayer-cpi-patch
 popd
 
 cd ${base}/promote/
-patch_version=`cat version`
+patch_version=`cat bosh-softlayer-cpi-patch/version`
 tar -zcvf bosh-softlayer-cpi-patch-${patch_version}.tgz bosh-softlayer-cpi-patch
