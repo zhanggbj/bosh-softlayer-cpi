@@ -20,7 +20,7 @@ resources:
 - name: bosh-cpi-patch-artifacts
   type: s3
   source:
-    regexp: bosh-softlayer-cpi-patch-(\d+\.\d+\.\d+)\.tgz
+    regexp: bosh-softlayer-cpi-patch-test-(\d+\.\d+\.\d+)\.tgz
     bucket: {{s3_pipeline_bucket}}
     access_key_id: {{s3_access_key_id}}
     secret_access_key: {{s3_secret_access_key}}
@@ -37,4 +37,4 @@ jobs:
     file: bosh-cpi-release/ci/tasks/build-patch.yml
 
   - put: bosh-cpi-patch-artifacts
-    params: {file: promote/bosh-softlayer-cpi-patch-*.tgz}
+    params: {file: promote/bosh-softlayer-cpi-patch-test-*.tgz}
