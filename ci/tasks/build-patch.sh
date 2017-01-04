@@ -72,4 +72,5 @@ popd
 
 cd ${base}/promote/
 patch_version=`cat bosh-softlayer-cpi-patch/version`
-tar -zcvf bosh-softlayer-cpi-patch-test-${patch_version}.tgz bosh-softlayer-cpi-patch
+mv bosh-softlayer-cpi-patch bosh-softlayer-cpi-patch-${patch_version}
+tar -zcvf bosh-softlayer-cpi-patch-test-${patch_version}.tgz bosh-softlayer-cpi-patch-${patch_version}
