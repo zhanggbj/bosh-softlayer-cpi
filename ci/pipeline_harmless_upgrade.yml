@@ -12,7 +12,7 @@ resources:
 - name: bosh-cpi-final-artifacts
   type: s3
   source:
-    regexp: bosh-softlayer-cpi-([0-9])\.tgz
+    regexp: bosh-softlayer-cpi-([0-9]+)\.tgz
     bucket: {{s3_pipeline_bucket}}
     access_key_id: {{s3_access_key_id}}
     secret_access_key: {{s3_secret_access_key}}
