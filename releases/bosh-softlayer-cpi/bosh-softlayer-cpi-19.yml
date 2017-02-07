@@ -1,0 +1,26 @@
+---
+name: bosh-softlayer-cpi
+version: '19'
+commit_hash: a2d4cce
+uncommitted_changes: true
+jobs:
+- name: softlayer_cpi
+  version: 304e322cc2a55a8d78e3cda544dc809241648fb2
+  fingerprint: 304e322cc2a55a8d78e3cda544dc809241648fb2
+  sha1: 8986b8b3d7cb0d11f79ef0baaf6dacaaad30213d
+packages:
+- name: bosh_softlayer_cpi
+  version: 81dba4020ab4b5ee59a4c720d158c8e8105085c8
+  fingerprint: 81dba4020ab4b5ee59a4c720d158c8e8105085c8
+  sha1: f69e2e37ade1dfec6dfb36e61c874723b2139108
+  dependencies:
+  - golang_1.7.1
+- name: golang_1.7.1
+  version: 63889d018ded88d660b01994d7b00c74ce6fe8d5
+  fingerprint: 63889d018ded88d660b01994d7b00c74ce6fe8d5
+  sha1: 92bd8900fbc6c31bf877e99d444070275bc2edee
+  dependencies: []
+license:
+  version: 45ba225fe5790e0633fb9a8e20be9efeea888f51
+  fingerprint: 45ba225fe5790e0633fb9a8e20be9efeea888f51
+  sha1: 840c21cb6b4c1495a60606dbfc9069c5a60af119
