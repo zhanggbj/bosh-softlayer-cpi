@@ -65,9 +65,8 @@ cp ${apply_script} ${base}/promote/bosh-softlayer-cpi-patch
 echo "Copy cpi version..."
 pushd bosh-cpi-final-release
   tar -zxvf bosh-softlayer-cpi-*.tgz
-  cd packages
-  tar -zxvf bosh_softlayer_cpi.tgz
-  cp bosh-softlayer-cpi/version ${base}/promote/bosh-softlayer-cpi-patch
+  echo .0.0 >> version
+  cp version ${base}/promote/bosh-softlayer-cpi-patch
 popd
 
 cd ${base}/promote/
